@@ -19,6 +19,10 @@ const (
 )
 
 func doCommand(c *cli.Context) (err error) {
+	if c.NArg() != 2 {
+		err = errors.New("Must have 2 arguments")
+		return
+	}
 	client, err := containerd.New(c.GlobalString("address"), containerd.WithDefaultNamespace(c.GlobalString("namespace")))
 	if err != nil {
 		return
@@ -32,11 +36,6 @@ func doCommand(c *cli.Context) (err error) {
 
 	imageService := client.ImageService()
 	if err != nil {
-		return
-	}
-
-	if c.NArg() != 2 {
-		err = errors.New("Must have 2 arguments")
 		return
 	}
 
