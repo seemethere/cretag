@@ -2,6 +2,8 @@
 
 Retag containerd images
 
+A standalone implementation of https://github.com/containerd/containerd/pull/3388
+
 
 ## installation
 
